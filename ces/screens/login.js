@@ -10,21 +10,31 @@ import {
   TouchableHighlight,
   ImageBackground,
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './screens/home';
-import LoginScreen from './screens/login';
 
-const Stack = createNativeStackNavigator();
-
-export default function App() {
+export default function LoginScreen({ navigation }) {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <View style={styles.container}>
+      <StatusBar style="dark" />
+      <View style={styles.navBar}>
+        <TouchableHighlight
+          onPress={() => {
+            navigation.navigate('Home');
+          }}
+        >
+          <Image style={styles.cesLogo} source={require('../img/recycle.png')} />
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => {
+            navigation.navigate('Login');
+          }}
+        >
+          <Text style={{ color: 'white', padding: 10 }}>LOGIN</Text>
+        </TouchableHighlight>
+      </View>
+      <View style={styles.body}>
+        <Text>LOGIN SCREEN</Text>
+      </View>
+    </View>
   );
 }
 
